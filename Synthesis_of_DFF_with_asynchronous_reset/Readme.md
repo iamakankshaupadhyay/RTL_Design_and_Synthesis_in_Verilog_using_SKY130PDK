@@ -1,6 +1,6 @@
 ## Simulation and Synthesis Workflow
 
-### Icarus Verilog Simulation
+### Simulation with iverilog
 
 1. **Compile:**
    ```shell
