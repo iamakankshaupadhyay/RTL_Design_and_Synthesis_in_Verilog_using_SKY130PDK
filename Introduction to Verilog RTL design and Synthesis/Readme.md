@@ -38,28 +38,28 @@ gtkwave tb_good_mux.vcd
 ### 1. **Start Yosys**
 
   ```shell
-    yosys
+yosys
   ```
 
 ### 2. **Read the liberty library**
 Library (.lib file) contains standard cells (basic gates, modules etc.) for synthesis.
   ```shell
-    read_liberty -lib /address_to_your_sky130_file/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_liberty -lib /address_to_your_sky130_file/sky130_fd_sc_hd__tt_025C_1v80.lib
   ```
 
 ### 3. **Read the Verilog code**
   ```shell
-    read_verilog /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/verilog_files/good_mux.v
+ read_verilog /home/vsduser/VLSI/sky130RTLDesignAndSynthesisWorkshop/verilog_files/good_mux.v
   ```
 
 ### 4. **Synthesize the design**
   ```shell
-    synth -top good_mux
+synth -top good_mux
    ```
 
 ### 5. **Technology mapping**
   ```shell
-    abc -liberty /address_to_your_sky130_file/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty /address_to_your_sky130_file/sky130_fd_sc_hd__tt_025C_1v80.lib
    ```
 
 ### 6. **Visualize the gate-level netlist**
