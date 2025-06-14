@@ -71,8 +71,8 @@ abc -liberty /address_to_your_sky130_file/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
-### Lab 5
-
+## 1. Sequential Logic Optimizations
+### Module 1: dff_const1.v
 Verilog code:
 
 ```verilog
@@ -86,4 +86,23 @@ begin
 end
 endmodule
 ```
+This is a D flip-flop where if Asynchronous reset is '1' than output is set to '0', whereas, loads constant `1` when not in reset. 
+### Module 2: dff_const2.v
+
+Verilog code:
+
+```verilog
+module dff_const2(input clk, input reset, output reg q);
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+		q <= 1'b1;
+	else
+		q <= 1'b1;
+end
+endmodule
+```
+This is a D flip-flop where  output is set to '1' regardless of reset or clk.
+Synthesis is performed using steps given in: Synthesis_of_DFF_with_asynchronous_reset
+
 
