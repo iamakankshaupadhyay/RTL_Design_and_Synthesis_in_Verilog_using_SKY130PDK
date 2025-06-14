@@ -70,7 +70,7 @@ show
 ### 8. **Write and view (in text editor GVim) the gate-level netlist**
 
   ```shell
-    write_verilog -noattr good_mux_netlist.v
-    !gvim good_mux_netlist.v
+write_verilog -noattr good_mux_netlist.v
+!gvim good_mux_netlist.v
    ```
 
