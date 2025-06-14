@@ -5,7 +5,7 @@
  
  ###  Synthesis of RTL design (multiple_modules.v) using Yosys tool
 
-1. **Start Yosys**
+### 1. **Start Yosys**
 
   ```shell
 yosys
