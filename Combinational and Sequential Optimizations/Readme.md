@@ -104,6 +104,31 @@ endmodule
 ```
 This is a D flip-flop where  output is set to '1' regardless of reset or clk.
 
+module dff_const3(input clk, input reset, output reg q);
+reg q1;
+
+### Module 3: dff_const3.v
+Verilog code:
+
+```verilog
+always @(posedge clk, posedge reset)
+begin
+	if(reset)
+	begin
+		q <= 1'b1;
+		q1 <= 1'b0;
+	end
+	else
+	begin
+		q1 <= 1'b1;
+		q <= q1;
+	end
+end
+
+endmodule
+```
+This code represents two D flip flops having same clk and reset, output of first flip flop q1 serves as input to second D flip flop having output q. Input of first D FF is 1.
+
 ### Synthesis is performed using steps given in: Synthesis_of_DFF_with_asynchronous_reset/Readme.md
 
 
