@@ -65,7 +65,7 @@ Library (.lib file) contains standard cells (basic gates, modules etc.) for synt
 ### 6. **Visualize the gate-level netlist**
 
 ```shell
-    show
+show
 ```
 ### 8. **Write and view (in text editor GVim) the gate-level netlist**
 
