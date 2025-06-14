@@ -103,6 +103,6 @@ end
 endmodule
 ```
 This is a D flip-flop where  output is set to '1' regardless of reset or clk.
-Synthesis is performed using steps given in: Synthesis_of_DFF_with_asynchronous_reset
+Synthesis is performed using steps given in: Synthesis_of_DFF_with_asynchronous_reset/Readme.md
 
 
