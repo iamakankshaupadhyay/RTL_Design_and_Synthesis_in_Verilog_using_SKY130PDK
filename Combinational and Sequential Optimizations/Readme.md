@@ -104,13 +104,14 @@ endmodule
 ```
 This is a D flip-flop where  output is set to '1' regardless of reset or clk.
 
-module dff_const3(input clk, input reset, output reg q);
-reg q1;
+
 
 ### Module 3: dff_const3.v
 Verilog code:
 
 ```verilog
+module dff_const3(input clk, input reset, output reg q);
+reg q1;
 always @(posedge clk, posedge reset)
 begin
 	if(reset)
