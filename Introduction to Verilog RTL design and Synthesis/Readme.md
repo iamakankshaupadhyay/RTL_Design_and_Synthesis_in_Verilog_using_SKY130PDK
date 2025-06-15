@@ -34,13 +34,17 @@ Tool used for converting the RTL to netlist. Yosys is the open-source synthesize
   <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Introduction%20to%20Verilog%20RTL%20design%20and%20Synthesis/Images/synth.png" alt="Design & Testbench Overview" width="70%">
 </div>
 
-# Verify the Synthesis 
+# Yosys Setup
 </div>
 <div align="center">
   <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Introduction%20to%20Verilog%20RTL%20design%20and%20Synthesis/Images/yosy.png" alt="Design & Testbench Overview" width="70%">
 </div>
 
-
+# Verify the Synthesis 
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Introduction%20to%20Verilog%20RTL%20design%20and%20Synthesis/Images/verifysynth.png" alt="Design & Testbench Overview" width="70%">
+</div>
 
 # Simulating 2x1 multiplexer using iverilog
 ### 1. Clone the github repository
