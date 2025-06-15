@@ -1,3 +1,22 @@
+## Understanding the Basics: Simulator, Design, and Testbench
+🔄 Simulator
+. RTL design is checked for adherence to the specifications by simulating the design
+· Simulator is the tool used for simulating the design
+A simulator is a virtual test environment for digital circuits. It mimics how your Verilog code would behave in real hardware by applying inputs, running time-based events, and showing output responses—helping catch bugs early before any physical implementation.
+
+📐 Design
+. Design is the actual Verilog code or set of Verilog codes which has the intended functionality to meet with the required specifications.
+The design refers to your core Verilog module—your actual digital logic (like an ALU, counter, or FSM). It's the hardware description that defines what the circuit does.
+
+🎛️ Testbench
+. TestBench is the setup to apply stimulus (test_vectors) to the design to check its functionality
+A testbench acts as the controller in simulation. It generates input stimuli, monitors outputs, and verifies correctness of your design. It’s not synthesized into hardware—just a helpful tool to ensure your design works as expected.
+### How simulator works
+. Simulator looks for the changes on the input signals
+. Upon change to the input the output is evaluated. If no change to the input, no change to the output!
+. Simulator is looking for change in the values of input!
+
+
 ## Simulating 2x1 multiplexer using iverilog
 ### 1. Clone the github repository
 
