@@ -44,7 +44,10 @@ Mentioning the name of file is necessary, because here three modules are generat
 write_verilog -noattr multiple_modules_hier.v
 !gvim multiple_modules_hier.v
    ```
-The netlist is illustrated in hierarchical.png: https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Hierarchical%20and%20Flat%20Synthesis/hierarchical.png, and netlist given in: https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Hierarchical%20and%20Flat%20Synthesis/multiple_modules_hier.v.
+The netlist is illustrated as:
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Hierarchical%20and%20Flat%20Synthesis/hierarchical.png" alt="Design & Testbench Overview" width="70%">
+</div>
 **Advantages:**
 - Faster synthesis time for large designs.
 - Improved debugging and analysis due to maintained module boundaries.
@@ -99,7 +102,10 @@ flatten
 write_verilog -noattr multiple_modules_hier.v
 !gvim multiple_modules_hier.v
    ```
-The netlist is illustrated in flatmodule.png: https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Hierarchical%20and%20Flat%20Synthesis/flatmodule.png and netlist given in: https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Hierarchical%20and%20Flat%20Synthesis/multiple_modules_flat.v.
+The netlist is illustrated as: 
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Hierarchical%20and%20Flat%20Synthesis/flatmodule.png" alt="Design & Testbench Overview" width="70%">
+</div>
 
 **Advantages:**
 - Enables aggressive, cross-module optimizations.
