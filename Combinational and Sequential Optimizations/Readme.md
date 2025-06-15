@@ -71,7 +71,7 @@ abc -liberty /address_to_your_sky130_file/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
 ```
 
-## 1. Sequential Logic Optimizations
+## 2. Sequential Logic Optimizations
 ### Module 1: dff_const1.v
 Verilog code:
 
@@ -103,10 +103,8 @@ end
 endmodule
 ```
 This is a D flip-flop where  output is set to '1' regardless of reset or clk.
-
-
-
-### Module 3: dff_const3.v
+## 3. Sequential Logic Optimizations for Unused Outputs
+### Module 1: dff_const3.v
 Verilog code:
 
 ```verilog
@@ -129,6 +127,7 @@ end
 endmodule
 ```
 This code represents two D flip flops having same clk and reset, output of first flip flop q1 serves as input to second D flip flop having output q. Input of first D FF is 1.
+
 
 ### Synthesis is performed using steps given in: Synthesis_of_DFF_with_asynchronous_reset/Readme.md
 
