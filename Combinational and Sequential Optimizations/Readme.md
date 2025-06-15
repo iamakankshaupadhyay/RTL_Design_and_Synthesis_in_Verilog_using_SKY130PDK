@@ -103,8 +103,8 @@ end
 endmodule
 ```
 This is a D flip-flop where  output is set to '1' regardless of reset or clk.
-## 3. Sequential Logic Optimizations for Unused Outputs
-### Module 1: dff_const3.v
+
+### Module 3: dff_const3.v
 Verilog code:
 
 ```verilog
@@ -127,8 +127,45 @@ end
 endmodule
 ```
 This code represents two D flip flops having same clk and reset, output of first flip flop q1 serves as input to second D flip flop having output q. Input of first D FF is 1.
-
-
 ### Synthesis is performed using steps given in: Synthesis_of_DFF_with_asynchronous_reset/Readme.md
+## 3. Sequential Logic Optimizations for Unused Outputs
+### Module 1: counter_opt.v
+Verilog code:
+```verilog
+module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = count[0];
+
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+
+endmodule
+```
+In this case q is set at count[0] which is toggling on each clock cycle. count[2] and count[1] are unused in this case. So this implementation will require only one D FF for three bit counter.
+### Module 2: counter_opt2.v
+Verilog code:
+```verilog
+module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = (count[2:0] == 3'b100);
+
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+
+endmodule
+```
+In this case q = (count[2:0] == 3'b100); so in this implementation all outputs are retained and implementation will require three D FFs.
+
+
 
 
