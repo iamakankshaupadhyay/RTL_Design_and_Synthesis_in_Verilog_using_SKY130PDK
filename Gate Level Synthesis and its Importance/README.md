@@ -56,5 +56,48 @@ Verilog offers two types of procedural assignments:
 | Infers combinational logic (gates)        | Infers sequential logic (flip-flops)       |
 
 ---
+# Gate Level Synthesis Steps
+## 1. 2x1 MUX using ternary operator
+### Verilog code and Simulation using iverilog
+
+```verilog
+module ternary_operator_mux (input i0, input i1, input sel, output y);
+  assign y = sel ? i1 : i0;
+endmodule
+```
+- **Function:** `y = i1` if `sel = 1`; else `y = i0`.
+
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Gate%20Level%20Synthesis%20and%20its%20Importance/ternary_mux.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+---
+
+### Synthesis Using Yosys
+
+Synthesize the above MUX using Yosys.  
+_Follow the standard Yosys synthesis flow._
+
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Gate%20Level%20Synthesis%20and%20its%20Importance/ternary_mux_netlist.png" width="70%">
+</div>
+
+### Gate-Level Simulation (GLS) of MUX
+
+Run GLS for the synthesized MUX.  
+Use this command (adjust paths as needed):
+
+```shell
+iverilog /path/to/primitives.v /path/to/sky130_fd_sc_hd.v ternary_operator_mux.v testbench.v
+./a.out
+gtkwave dump_file_nake.vcd
+```
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Gate%20Level%20Synthesis%20and%20its%20Importance/ternary_mux_netlist_waveform.png" width="70%">
+</div>
+
 
 
