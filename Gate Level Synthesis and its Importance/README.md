@@ -99,5 +99,111 @@ gtkwave dump_file_nake.vcd
   <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Gate%20Level%20Synthesis%20and%20its%20Importance/ternary_mux_netlist_waveform.png" width="70%">
 </div>
 
+## 2. 2x1 MUX with issue in sensitivity list
+### Verilog code and Simulation using iverilog
+```verilog
+module bad_mux (input i0, input i1, input sel, output reg y);
+  always @ (sel) begin
+    if (sel)
+      y <= i1;
+    else 
+      y <= i0;
+  end
+endmodule
+```
+
+#### Issues:
+- **Incomplete sensitivity list**: Should include `i0`, `i1`, and `sel` or `*`.
+- **Non-blocking assignment in combinational logic**: Should use blocking assignments (`=`).
+ The output wavefrom illustrates that RTL code is not behaving like 2x1 mux, else the y changes its value to i0 and i1 only at falling or rising edges of sel, respectively as shown below:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Gate%20Level%20Synthesis%20and%20its%20Importance/bad_mux_RTL_waveform.png" width="70%">
+</div>
+
+**Corrected version:**
+```verilog
+always @ (*) begin
+  if (sel)
+    y = i1;
+  else
+    y = i0;
+end
+```
+
+### Synthesis Using Yosys
+However, synthesized circuit contains 2x1 mux.
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Gate%20Level%20Synthesis%20and%20its%20Importance/bad_mux_netlist.png" width="70%">
+</div>
+
+### Gate-Level Simulation (GLS) of MUX
+The GLS output waveform is behaving like 2x1 mux despite of 2x1 mux RTL simulation not behaving like one.
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Gate%20Level%20Synthesis%20and%20its%20Importance/bad_mux_GLS_waveform.png" width="70%">
+</div>
+
+Hence, this example represents synthesis-simulation mismatch due to error in sensitivity list.
+
+### 3: Blocking Assignment Caveat
+### Verilog code and Simulation using iverilog
+Verilog code:
+The circuit should behave like or and gate.
+```verilog
+module blocking_caveat (input a, input b, input c, output reg d);
+  reg x;
+  always @ (*) begin
+    d = x & c;
+    x = a | b;
+  end
+endmodule
+```
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Gate%20Level%20Synthesis%20and%20its%20Importance/blocking_caveat_RTL_waveform.png" width="70%">
+</div>
+
+#### What’s wrong?
+- The order of assignments causes `d` to use the old value of `x`—not the newly computed value.
+- **Best Practice:** Assign intermediate variables before using them.
+
+**Corrected order:**
+```verilog
+always @ (*) begin
+  x = a | b;
+  d = x & c;
+end
+```
+
+### Synthesis of the Blocking Caveat Module using Yosys
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Gate%20Level%20Synthesis%20and%20its%20Importance/blocking_caveat_netlist.png" width="70%">
+</div>
+
+### Gate-Level Simulation (GLS) of MUX
+The GLS output waveform is behaving like normal or and gate.
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Gate%20Level%20Synthesis%20and%20its%20Importance/blocking_caveat_GLS_waveform.png" width="70%">
+</div>
+Hence, this example represents synthesis-simulation mismatch due to incorrect order of blocking statement.
+
+## 5. Summary
+
+- **Gate-Level Simulation (GLS):** Validates netlist functionality, timing, and testability after synthesis.
+- **Synthesis-Simulation Mismatch:** Avoid by using synthesizable, unambiguous RTL code.
+- **Blocking vs. Non-Blocking:** Use blocking (`=`) for combinational, non-blocking (`<=`) for sequential logic.
+- **Labs:** Reinforce key concepts and highlight common RTL pitfalls.
+
+---
+
+> [!TIP]
+>  Always simulate both your RTL and gate-level netlist, and review warnings from synthesis and simulation tools!
+
+---
+
 
 
