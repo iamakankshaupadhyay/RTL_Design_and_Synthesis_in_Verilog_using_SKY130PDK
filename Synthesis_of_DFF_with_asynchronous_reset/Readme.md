@@ -14,7 +14,11 @@
    ```shell
    gtkwave tb_dff_asyncres.vcd
    ```
-The output waveform is given in: https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Synthesis_of_DFF_with_asynchronous_reset/dff_asyncres.png
+The output waveform is given in: 
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Synthesis_of_DFF_with_asynchronous_reset/dff_asyncres.png" alt="Design & Testbench Overview" width="70%">
+</div>
 
 ### Synthesis with Yosys
 
@@ -46,5 +50,9 @@ The output waveform is given in: https://github.com/iamakankshaupadhyay/RTL_Desi
    ```shell
    show
    ```
-The netlist is illustrated in https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Synthesis_of_DFF_with_asynchronous_reset/dff_asyncres_netlist.png and given in https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Synthesis_of_DFF_with_asynchronous_reset/dff_asyncres_net.v
+The netlist is illustrated in </div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Synthesis_of_DFF_with_asynchronous_reset/dff_asyncres_netlist.png" alt="Design & Testbench Overview" width="70%">
+</div> 
+The netlist file is given in https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Synthesis_of_DFF_with_asynchronous_reset/dff_asyncres_net.v
 
