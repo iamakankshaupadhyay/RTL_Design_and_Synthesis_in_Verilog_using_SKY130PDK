@@ -3,7 +3,7 @@
 This repository covers optimization in verilog synthesis, focusing on if-else statements, case statements, for loops, generate blocks, and explore how improper coding can lead to inferred latches
 Verilog offers powerful control flow constructs that allow designers to express complex decision-making and repeated structures efficiently in hardware. This repository introduces key Verilog constructs like if-else, case, for loops, and generate blocks — each serving a specific role in RTL design.
 
-## 🔹 if and if-else
+## 🔹1. if and if-else
 Used to make decisions based on logical conditions.
 ```verilog
 if (enable)
@@ -13,7 +13,7 @@ else
 ```
 Ideal for simple conditional logic, commonly used in combinational blocks (always @(*)).
 
-## 🔹 Nested if
+## 🔹2. Nested if
 Allows multiple levels of decision-making.
 ```verilog
 
@@ -26,7 +26,7 @@ else
 ```
 Use when priority-based conditions are needed. Cleanly handles multiple conditions. Recommended over deeply nested ternary operators for clarity.
 
-## ⚠️Inferred Latch in if-else statements
+### ⚠️Inferred Latch in if-else statements
 ```verilog
 always @(*) begin
   if (enable)
@@ -44,7 +44,7 @@ end
 ```
 ### Simulation and Synthesis of 2x1 mux with incomplete if-else statement
 
-## 🔹 case Statement
+## 🔹3. case Statement
 Cleaner alternative to if-else chains when checking against known, discrete values.
 ```verilog
 case (sel)
@@ -56,7 +56,7 @@ endcase
 ```
 Great for multiplexers, state machines, and logic decoding. Use default to avoid latch inference.
 
-## ⚠️ Caveats in `case` Statements
+### ⚠️ Caveats in `case` Statements
 
 While `case` constructs are powerful, **improper use can lead to bugs or unintended hardware behavior**. Below are some key caveats to watch out for:
 
@@ -122,7 +122,7 @@ endcase
 * Use `case` instead of `casez`/`casex` when exact match is critical.
 * Avoid `?` patterns unless required, and **comment clearly** when used.
 
-## 🔹 for Loops
+## 🔹4. for Loops
 Used in RTL to replicate logic, initialize arrays, or generate repetitive assignments.
 ```verilog
 integer i;
@@ -133,7 +133,7 @@ end
 ```
 Unlike software, for loops in hardware describe parallel replicated logic, not iteration in time.
 
-## 🔹 generate Blocks
+## 🔹5. generate Blocks
 Used for conditional or looped instantiation of modules or logic during elaboration time.
 ```verilog
 genvar i;
