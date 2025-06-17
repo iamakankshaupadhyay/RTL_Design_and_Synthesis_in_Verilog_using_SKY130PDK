@@ -78,6 +78,10 @@ This command creates a.out file.
 ```shell
 gtkwave tb_good_mux.vcd
 ```
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Introduction%20to%20Verilog%20RTL%20design%20and%20Synthesis/2X1_mux.png" alt="Design & Testbench Overview" width="70%">
+</div>
 
 
 ##  Synthesis of RTL design using Yosys tool
@@ -121,4 +125,8 @@ show
 write_verilog -noattr good_mux_netlist.v
 !gvim good_mux_netlist.v
    ```
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Introduction%20to%20Verilog%20RTL%20design%20and%20Synthesis/good_mux.png" alt="Design & Testbench Overview" width="70%">
+</div>
 
