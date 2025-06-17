@@ -3,7 +3,7 @@
 This repository covers optimization in verilog synthesis, focusing on if-else statements, case statements, for loops, generate blocks, and explore how improper coding can lead to inferred latches
 Verilog offers powerful control flow constructs that allow designers to express complex decision-making and repeated structures efficiently in hardware. This repository introduces key Verilog constructs like if-else, case, for loops, and generate blocks — each serving a specific role in RTL design.
 
-## 🔹1. if and if-else
+## 🔹1. if-else
 Used to make decisions based on logical conditions.
 ```verilog
 if (enable)
@@ -64,6 +64,33 @@ endmodule
 </div>
 <div align="center">
   <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/incomp_if_latchinferred.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠 Simulation and Synthesis of incomplete if-else statement
+Verilog code:
+
+```verilog
+module incomp_if2 (input i0 , input i1 , input i2 , input i3, output reg y);
+always @ (*)
+begin
+	if(i0)
+		y <= i1;
+	else if (i2)
+		y <= i3;
+
+end
+endmodule
+```
+### 💠Ouput waveform:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/incomp_if2_waveform.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠Inferred latch:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/incomp_if2_inferredlatch.png" alt="Design & Testbench Overview" width="70%">
 </div>
 
 
