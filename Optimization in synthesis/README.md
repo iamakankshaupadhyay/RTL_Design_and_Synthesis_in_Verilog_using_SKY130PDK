@@ -3,7 +3,7 @@
 This repository covers optimization in verilog synthesis, focusing on if-else statements, case statements, for loops, generate blocks, and explore how improper coding can lead to inferred latches
 Verilog offers powerful control flow constructs that allow designers to express complex decision-making and repeated structures efficiently in hardware. This repository introduces key Verilog constructs like if-else, case, for loops, and generate blocks — each serving a specific role in RTL design.
 
-## 🔹1. if-else
+## 🔹1. if-else statement
 Used to make decisions based on logical conditions.
 ```verilog
 if (enable)
@@ -13,7 +13,7 @@ else
 ```
 Ideal for simple conditional logic, commonly used in combinational blocks (always @(*)).
 
-## 🔹2. Nested if
+## 🔹2. Nested if statement
 Allows multiple levels of decision-making.
 ```verilog
 
@@ -42,7 +42,7 @@ always @(*) begin
     y = d;
 end
 ```
-### 💠 Simulation and Synthesis of 2x1 mux with incomplete if-else statement
+# 💠 Simulation and Synthesis of 2x1 mux with incomplete if-else statement
 Verilog code:
 
 ```verilog
@@ -66,7 +66,7 @@ endmodule
   <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/incomp_if_latchinferred.png" alt="Design & Testbench Overview" width="70%">
 </div>
 
-### 💠 Simulation and Synthesis of incomplete if-else statement
+# 💠 Simulation and Synthesis of incomplete Nested if-else statement
 Verilog code:
 
 ```verilog
@@ -109,8 +109,6 @@ Great for multiplexers, state machines, and logic decoding. Use default to avoid
 ### ⚠️ Caveats in `case` Statements
 
 While `case` constructs are powerful, **improper use can lead to bugs or unintended hardware behavior**. Below are some key caveats to watch out for:
-
----
 
 ### 🔸 1. **Partial Assignments Cause Inferred Latches**
 
@@ -171,6 +169,58 @@ endcase
 
 * Use `case` instead of `casez`/`casex` when exact match is critical.
 * Avoid `?` patterns unless required, and **comment clearly** when used.
+  
+# 💠 Simulation and Synthesis of 4x1 mux with incomplete case statement
+Verilog code:
+```verilog
+module incomp_case (input i0 , input i1 , input i2 , input [1:0] sel, output reg y);
+always @ (*)
+begin
+	case(sel)
+		2'b00 : y = i0;
+		2'b01 : y = i1;
+	endcase
+end
+endmodule
+```
+### 💠Ouput waveform:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/incomp_case.png" width="70%">
+</div>
+
+### 💠Inferred latch:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/incomp_case_inferredlatch.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+# 💠 Simulation and Synthesis of complete case statement
+Verilog code:
+```verilog
+module comp_case (input i0 , input i1 , input i2 , input [1:0] sel, output reg y);
+always @ (*)
+begin
+	case(sel)
+		2'b00 : y = i0;
+		2'b01 : y = i1;
+		default : y = i2;
+	endcase
+end
+endmodule
+```
+### 💠Ouput waveform:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/comp_case_waveform.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠4x1 Multiplexer:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/comp_case_netlist.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
 
 ## 🔹4. for Loops
 Used in RTL to replicate logic, initialize arrays, or generate repetitive assignments.
