@@ -26,7 +26,7 @@ else
 ```
 Use when priority-based conditions are needed. Cleanly handles multiple conditions. Recommended over deeply nested ternary operators for clarity.
 
-### ⚠️Inferred Latch in if-else statements
+### ⚠️ Inferred Latch in if-else statements
 ```verilog
 always @(*) begin
   if (enable)
@@ -42,7 +42,7 @@ always @(*) begin
     y = d;
 end
 ```
-### Simulation and Synthesis of 2x1 mux with incomplete if-else statement
+### 💠 Simulation and Synthesis of 2x1 mux with incomplete if-else statement
 Verilog code:
 
 ```verilog
@@ -54,12 +54,13 @@ begin
 end
 endmodule
 ```
-Ouput waveform:
+### 💠Ouput waveform:
 </div>
 <div align="center">
   <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/incomp_if_waveform.png" alt="Design & Testbench Overview" width="70%">
 </div>
-Inferred latch:
+
+### 💠Inferred latch:
 </div>
 <div align="center">
   <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/incomp_if_latchinferred.png" alt="Design & Testbench Overview" width="70%">
