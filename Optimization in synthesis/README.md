@@ -334,6 +334,87 @@ endmodule
   <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/4x1mux_for_GLS.png" alt="Design & Testbench Overview" width="70%">
 </div>
 
+# 💠 Simulation and Synthesis of 8x1 mux using case statement
+Verilog code: 
+
+```verilog
+module demux_case (output o0 , output o1, output o2 , output o3, output o4, output o5, output o6 , output o7 , input [2:0] sel  , input i);
+reg [7:0]y_int;
+assign {o7,o6,o5,o4,o3,o2,o1,o0} = y_int;
+integer k;
+always @ (*)
+begin
+y_int = 8'b0;
+	case(sel)
+		3'b000 : y_int[0] = i;
+		3'b001 : y_int[1] = i;
+		3'b010 : y_int[2] = i;
+		3'b011 : y_int[3] = i;
+		3'b100 : y_int[4] = i;
+		3'b101 : y_int[5] = i;
+		3'b110 : y_int[6] = i;
+		3'b111 : y_int[7] = i;
+	endcase
+
+end
+endmodule
+```
+### 💠Ouput waveform:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/demux_case.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠 Synthesized circuit:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/demux_case_netlist.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠 Gate Level Synthesis:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/demux_case_netlist_GLS.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+# 💠 Simulation and Synthesis of 8x1 mux using for loop
+Verilog code: 
+
+```verilog
+
+module demux_generate (output o0 , output o1, output o2 , output o3, output o4, output o5, output o6 , output o7 , input [2:0] sel  , input i);
+reg [7:0]y_int;
+assign {o7,o6,o5,o4,o3,o2,o1,o0} = y_int;
+integer k;
+always @ (*)
+begin
+y_int = 8'b0;
+for(k = 0; k < 8; k++) begin
+	if(k == sel)
+		y_int[k] = i;
+end
+end
+endmodule
+
+```
+### 💠Ouput waveform:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/demux_generate.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠 Synthesized circuit:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/demux_generate_netlist.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠 Gate Level Synthesis:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/demux_generate_netlist_GLS.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
 
 # 🔹5. generate Blocks
 Used for conditional or looped instantiation of modules or logic during elaboration time. Defined outside always block.
