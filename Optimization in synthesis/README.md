@@ -140,7 +140,7 @@ always @(*) begin
 end
 ```
 
-### 🔸 2. **Ambiguous Patterns like `2'b1?` May Not Match as Expected**
+### 🔸 2. Overlapping condition: **Ambiguous Patterns like `2'b1?` May Not Match as Expected**
 
 Verilog allows the use of **wildcards** like `?` in `casez` or `casex`, which can make matching easier — **but also risk incorrect matching**.
 
@@ -171,7 +171,7 @@ endcase
 * Avoid `?` patterns unless required, and **comment clearly** when used.
   
 # 💠 Simulation and Synthesis of 4x1 mux with incomplete case statement
-Verilog code:
+Verilog code: In the following code output y for case 2'b10 and 2'b11 are missing.
 ```verilog
 module incomp_case (input i0 , input i1 , input i2 , input [1:0] sel, output reg y);
 always @ (*)
@@ -196,7 +196,7 @@ endmodule
 </div>
 
 # 💠 Simulation and Synthesis of complete case statement
-Verilog code:
+Verilog code: In the following code default condition is added in the code to define value of output y for case 2'b10 and 2'b11.
 ```verilog
 module comp_case (input i0 , input i1 , input i2 , input [1:0] sel, output reg y);
 always @ (*)
@@ -219,6 +219,72 @@ endmodule
 </div>
 <div align="center">
   <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/comp_case_netlist.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+# 💠 Simulation and Synthesis of partial case assignment
+Verilog code: In the given code for case sel=2'b01, the output value of x is not defined causing inferred latch, despite the fact that default is defined.
+```verilog
+module partial_case_assign (input i0 , input i1 , input i2 , input [1:0] sel, output reg y , output reg x);
+always @ (*)
+begin
+	case(sel)
+		2'b00 : begin
+			y = i0;
+			x = i2;
+			end
+		2'b01 : y = i1;
+		default : begin
+		           x = i1;
+			   y = i2;
+			  end
+	endcase
+end
+endmodule
+```
+### 💠Ouput waveform:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/partial_case_assign_.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠Inferred latch:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/partial_case_assign_netlist.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+# 💠 Simulation and Synthesis of overlapping case condition
+Verilog code: In the given code for case sel=2'b1?, the ouput value of y depends on simulator if it considers 2'b1? as 2'b11 (y=i3) or 2'b10 (y=i2 or i3).
+
+```verilog
+module bad_case (input i0 , input i1, input i2, input i3 , input [1:0] sel, output reg y);
+always @(*)
+begin
+	case(sel)
+		2'b00: y = i0;
+		2'b01: y = i1;
+		2'b10: y = i2;
+		2'b1?: y = i3;
+	endcase
+end
+endmodule
+```
+### 💠Ouput waveform:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/bad_case_waveform.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠 Synthesized circuit behaves as normal 4x1 MUX
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/bad_case_netlist_normal_4x1mux.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠 Gate Level Synthesis indicates simulation-synthesis mismatch 
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/bad_case_netlist_normal_4x1mux_GLS.png" alt="Design & Testbench Overview" width="70%">
 </div>
 
 
