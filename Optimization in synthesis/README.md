@@ -3,7 +3,7 @@
 This repository covers optimization in verilog synthesis, focusing on if-else statements, case statements, for loops, generate blocks, and explore how improper coding can lead to inferred latches
 Verilog offers powerful control flow constructs that allow designers to express complex decision-making and repeated structures efficiently in hardware. This repository introduces key Verilog constructs like if-else, case, for loops, and generate blocks — each serving a specific role in RTL design.
 
-## 🔹1. if-else statement
+# 🔹1. if-else statement
 Used to make decisions based on logical conditions.
 ```verilog
 if (enable)
@@ -13,7 +13,7 @@ else
 ```
 Ideal for simple conditional logic, commonly used in combinational blocks (always @(*)).
 
-## 🔹2. Nested if statement
+# 🔹2. Nested if statement
 Allows multiple levels of decision-making.
 ```verilog
 
@@ -288,8 +288,8 @@ endmodule
 </div>
 
 
-## 🔹4. for Loops
-Used in RTL to replicate logic, initialize arrays, or generate repetitive assignments.
+# 🔹4. for Loops
+Used in RTL to replicate logic, multiple evaluations, initialize arrays, or generate repetitive assignments. Used inside always block.
 ```verilog
 integer i;
 always @(*) begin
@@ -299,8 +299,44 @@ end
 ```
 Unlike software, for loops in hardware describe parallel replicated logic, not iteration in time.
 
-## 🔹5. generate Blocks
-Used for conditional or looped instantiation of modules or logic during elaboration time.
+# 💠 Simulation and Synthesis of 4x1 mux using for loop
+Verilog code: 
+
+```verilog
+module mux_generate (input i0 , input i1, input i2 , input i3 , input [1:0] sel  , output reg y);
+wire [3:0] i_int;
+assign i_int = {i3,i2,i1,i0};
+integer k;
+always @ (*)
+begin
+for(k = 0; k < 4; k=k+1) begin
+	if(k == sel)
+		y = i_int[k];
+end
+end
+endmodule
+```
+### 💠Ouput waveform:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/4x1mux_for.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠 Synthesized circuit:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/4x1mux_for_netlist.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+### 💠 Gate Level Synthesis:
+</div>
+<div align="center">
+  <img src="https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/Images/4x1mux_for_GLS.png" alt="Design & Testbench Overview" width="70%">
+</div>
+
+
+# 🔹5. generate Blocks
+Used for conditional or looped instantiation of modules or logic during elaboration time. Defined outside always block.
 ```verilog
 genvar i;
 generate
