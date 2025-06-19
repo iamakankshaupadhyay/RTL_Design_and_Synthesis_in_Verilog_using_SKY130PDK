@@ -1,4 +1,48 @@
-## Hierarchical versus Flat Synthesis
+# 📚 Timing Libraries & SKY130 PDK Overview
+## 🔍 What is the SKY130 PDK?
+The SKY130 Process Design Kit (PDK) is an open-source toolkit provided by SkyWater Technologies. It is built around a 130nm CMOS fabrication process and includes everything needed for digital and analog IC design — including models for timing, power, area, and process variation.
+
+This PDK is widely adopted in open-source silicon design workflows and is supported by tools like Yosys, OpenROAD, and Magic.
+
+## 🧠 Understanding the Library Naming Convention
+One of the key components in synthesis and STA (Static Timing Analysis) is the timing library, typically provided in .lib format. A common example: sky130_fd_sc_hd__tt_025C_1v80.lib
+
+Let’s break it down:
+
+| Component | Meaning                         |
+| --------- | ------------------------------- |
+| `tt`      | Typical process corner          |
+| `025C`    | Temperature at **25°C**         |
+| `1v80`    | Core supply voltage = **1.80V** |
+
+
+This naming convention helps designers select the appropriate library based on process, voltage, and temperature (PVT) conditions.
+
+## 📂 How to View the .lib File
+To inspect the contents of a timing library file (e.g., cell delays, setup/hold times):
+
+### 🛠️ Step-by-step
+🧰 Step 1: Installing GVim and Viewing .lib Files
+GVim is the graphical version of vim, a powerful text editor. You can use it to explore .lib timing library files in the SKY130 PDK.
+```
+sudo apt update
+sudo apt install vim-gtk3
+```
+This installs GVim with GUI support.
+
+📂 Step 2: Open the Timing Library File
+Use the following command to open the .lib file in GVim:
+```
+gvim sky130_fd_sc_hd__tt_025C_1v80.lib
+```
+### ✅ Why GVim?
+Syntax highlighting for better readability
+
+Easy navigation and search (/keyword)
+
+Lightweight and fast for large files like .lib
+
+# ⚙️Hierarchical versus Flat Synthesis
 
 ## 1. Hierarchical Synthesis
  Retains the module hierarchy as defined in RTL, synthesizing modules separately.
