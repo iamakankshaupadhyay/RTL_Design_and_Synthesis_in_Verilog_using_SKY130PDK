@@ -1,6 +1,48 @@
-## Simulation and Synthesis Workflow
+# 🔁 Flip-Flop Coding Styles
 
-### Simulation with iverilog
+Flip-flops are the backbone of sequential logic — they store binary data and synchronize changes with a clock. In Verilog, the way you describe them affects synthesizability, reset behavior, and timing closure. Below are commonly used and efficient coding styles.
+
+### Asynchronous Reset D Flip-Flop
+
+```verilog
+module dff_asyncres (input clk, input async_reset, input d, output reg q);
+  always @ (posedge clk, posedge async_reset)
+    if (async_reset)
+      q <= 1'b0;
+    else
+      q <= d;
+endmodule
+```
+- **Asynchronous reset**: Overrides clock, setting q to 0 immediately.
+- **Edge-triggered**: Captures d on rising clock edge if reset is low.
+
+### Asynchronous Set D Flip-Flop
+
+```verilog
+module dff_async_set (input clk, input async_set, input d, output reg q);
+  always @ (posedge clk, posedge async_set)
+    if (async_set)
+      q <= 1'b1;
+    else
+      q <= d;
+endmodule
+```
+- **Asynchronous set**: Overrides clock, setting q to 1 immediately.
+
+### Synchronous Reset D Flip-Flop
+
+```verilog
+module dff_syncres (input clk, input async_reset, input sync_reset, input d, output reg q);
+  always @ (posedge clk)
+    if (sync_reset)
+      q <= 1'b0;
+    else
+      q <= d;
+endmodule
+```
+- **Synchronous reset**: Takes effect only on the clock edge.
+
+### Simulation of Asynchronous Reset D Flip-Flop with iverilog
 
 1. **Compile:**
    ```shell
