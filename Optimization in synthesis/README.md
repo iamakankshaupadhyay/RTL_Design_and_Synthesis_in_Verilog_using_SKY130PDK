@@ -1,4 +1,4 @@
-# Optimization in Synthesis
+# 🎯Optimization in Synthesis
 
 This repository covers optimization in verilog synthesis, focusing on if-else statements, case statements, for loops, generate blocks, and explore how improper coding can lead to inferred latches
 Verilog offers powerful control flow constructs that allow designers to express complex decision-making and repeated structures efficiently in hardware. This repository introduces key Verilog constructs like if-else, case, for loops, and generate blocks — each serving a specific role in RTL design.
