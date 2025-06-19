@@ -1,4 +1,4 @@
-## [RTL Design And Synthesis Workshop Using Sky130PDK](https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/)
+## 🚀 [RTL Design And Synthesis Workshop Using Sky130PDK](https://www.vlsisystemdesign.com/rtl-design-using-verilog-with-sky130-technology/)
 Welcome to the RTL Design Workshop — a practical learning journey into the world of digital logic design using Verilog. This repository is organized as a multi-day series, with each day featuring guided labs, annotated code, and step-by-step explanations to help you build, simulate, and synthesize real digital circuits from scratch.
 
 ### 📘 About This Workshop
@@ -39,7 +39,7 @@ To get the most out of this workshop, make sure you're comfortable with the foll
   * `yosys` for logic synthesis
   * Any code editor of your choice (e.g., VS Code, Vim, Nano)
 
-### Workshop Structure
+### 📁Workshop Structure
 
 The workshop is organized by day, each with a dedicated folder and Readme:
 
@@ -69,11 +69,11 @@ These tools are free, beginner-friendly, and used in real-world academic and ope
 
 You don’t need perfect tools — just the right ones to begin.
 
-### License
+### 📄License
 
 This project is licensed under the Attribution 4.0 International License - see the [LICENSE](./LICENSE) file for details.
 
-### Acknowledgements 👑
+### 🙏Acknowledgements
 
 *  [Shon Taware](https://www.linkedin.com/in/shon-taware/)
 *  [Kunal Ghosh](https://www.linkedin.com/in/kunal-ghosh-vlsisystemdesign-com-28084836/)
