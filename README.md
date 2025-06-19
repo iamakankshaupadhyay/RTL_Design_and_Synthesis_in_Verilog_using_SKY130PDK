@@ -10,14 +10,19 @@ This hands-on workshop is designed for **students, hobbyists, and early-career e
 * Writing and simulating RTL designs using **Verilog**
 * Running functional simulations with **Icarus Verilog** and visualizing waveforms in **GTKWave**
 * Performing logic synthesis with **Yosys** and the **Sky130 open-source process design kit**
+* Hands on practice using Linux terminal or open-source FPGA environments
 * Understanding core concepts like:
 
+  * Basics of **Verilog Coding**
   * **Testbench creation**
-  * **Timing libraries**
+  * **Standard cell libraries and their verilog modules**
   * **D Flip-Flop styles**
+  * **Hold and setup time** concepts
   * Basic **optimization techniques**
   * **if-else, case, for, and generate** statements
   * **Gate level Synthesis**
+  * **Inferred Latches**
+  * **Simulation and Synthesis mismatch**
 
 ### 🛠️ What You’ll Need Before You Start
 
@@ -36,19 +41,13 @@ To get the most out of this workshop, make sure you're comfortable with the foll
 
 ### Workshop Structure
 
-The workshop is organized by day, each with a dedicated folder and README:
+The workshop is organized by day, each with a dedicated folder and Readme:
 
 - **Day 1: Introduction to Verilog RTL Design & Synthesis** ([Introduction to Verilog RTL design and Synthesis/Readme.md](https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Introduction%20to%20Verilog%20RTL%20design%20and%20Synthesis/Readme.md))
 - **Day 2: Timing Libraries, Synthesis Approaches, and Efficient Flip-Flop Coding** ([Hierarchical and Flat Synthesis/Readme.md](https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Hierarchical%20and%20Flat%20Synthesis/Readme.md)) and ([Synthesis_of_DFF_with_asynchronous_reset/Readme.md](https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Synthesis_of_DFF_with_asynchronous_reset/Readme.md))
 - **Day 3: Combinational and Sequential Optimization** ([Combinational and Sequential Optimizations/Readme.md](https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Combinational%20and%20Sequential%20Optimizations/Readme.md))
 - **Day 4: Gate-Level Simulation (GLS), Blocking vs. Non-Blocking in Verilog, and Synthesis-Simulation Mismatch** ([Gate Level Synthesis and its Importance/README.md](https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Gate%20Level%20Synthesis%20and%20its%20Importance/README.md))
 - **Day 5: Optimization in Synthesis** ([Optimization in synthesis/README.md](https://github.com/iamakankshaupadhyay/RTL_Design_and_Synthesis_in_Verilog_using_SKY130PDK/blob/master/Optimization%20in%20synthesis/README.md))
-
-Each day’s README includes:
-- Clear explanations of the day’s concepts
-- Step-by-step practical labs with code and screenshots
-- Tips and best practices for RTL design
-
 
 **You don’t need a big budget to start designing chips.**
 
